@@ -11,7 +11,7 @@ interface LoginProps {}
 
 export default function Login() {
   const navigation = useNavigation();
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const [checked, setChecked] = useState<"student" | "teacher" | "adm">();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -20,8 +20,7 @@ export default function Login() {
   async function handleLogin() {
     setLoading(true);
     try {
-      const data = await UserService.login(email, password);
-      console.log(data);
+      await signIn(email, password);
     } catch (err) {
       ToastAndroid.showWithGravityAndOffset(
         "ERRO: Verifique se os dados estão corretos",
@@ -45,6 +44,7 @@ export default function Login() {
           />
           <TextInput
             label="Email"
+            autoCapitalize="none"
             mode="outlined"
             style={{ marginBottom: 10 }}
             value={email}
@@ -78,8 +78,11 @@ export default function Login() {
             onPress={() => setChecked("adm")}
           />
 
-          <Button mode="contained" onPress={handleLogin}
+          <Button
+            mode="contained"
+            onPress={handleLogin}
             loading={loading}
+            buttonColor={loading ? "#2f2f2f" : ""}
           >
             Logar
           </Button>

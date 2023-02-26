@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Text } from "react-native";
 import { AuthContext } from "./../contexts/AuthContext";
 import Login from "./../pages/Login/index";
+import Home from "../pages/Home";
 
 const Stack = createStackNavigator();
 
@@ -12,8 +13,7 @@ const LoggedInStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        component={() => <Text>sadsadas</Text>}
-        //set title
+        component={Home}
         options={{
           title: "Home",
         }}
@@ -38,11 +38,11 @@ const LoggedOutStack = () => {
 };  
 
 const Routes = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <NavigationContainer>
-      {isLoggedIn ? <LoggedInStack /> : <LoggedOutStack />}
+      {user ? <LoggedInStack /> : <LoggedOutStack />}
     </NavigationContainer>
   );
 };

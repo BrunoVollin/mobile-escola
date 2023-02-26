@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import UserService from "./../services/user";
 
 type User = {
   name: string;
@@ -11,8 +12,6 @@ type AuthContextData = {
   signOut: () => void;
 };
 
-
-
 export const AuthContext = createContext({} as AuthContextData);
 
 type AuthContextProviderProps = {
@@ -22,10 +21,10 @@ type AuthContextProviderProps = {
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
 
-
-  const signIn = (email: string, password: string) => {
+  const signIn = async (email: string, password: string) => {
+    const { first, last } = await UserService.login(email, password);
     setUser({
-      name: 'Nome do usuário',
+      name: first + " " + last,
       email,
     });
   };
@@ -35,7 +34,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signOut}}>
+    <AuthContext.Provider value={{ user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
