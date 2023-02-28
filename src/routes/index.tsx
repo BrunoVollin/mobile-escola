@@ -5,6 +5,7 @@ import { Text } from "react-native";
 import { AuthContext } from "./../contexts/AuthContext";
 import Login from "./../pages/Login/index";
 import Home from "../pages/Home";
+import TeacherClasses from "../pages/Teacher/TeacherClasses";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const LoggedInStack = () => {
         }}
       />
       <Stack.Screen name="Profile" component={() => <Text>sadsadas</Text>} />
+      <Stack.Screen name='TeacherClasses' component={TeacherClasses} />
     </Stack.Navigator>
   );
 };

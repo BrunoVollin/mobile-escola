@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\prodi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/styled-components/native
+  C:\Program Files\nodejs\node.exe C:\Users\prodi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/react-native-async-storage/async-storage
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\prodi\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\prodi\AppData\Local\Programs\Python\Python311\;C:\Users\prodi\AppData\Local\Microsoft\WindowsApps;C:\Users\prodi\AppData\Roaming\npm;C:\Users\prodi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\prodi\AppData\Local\GitHubDesktop\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fstyled-components/native: Request "https://registry.yarnpkg.com/@types%2fstyled-components/native" returned a 405
+  Error: https://registry.yarnpkg.com/@types%2freact-native-async-storage/async-storage: Request "https://registry.yarnpkg.com/@types%2freact-native-async-storage/async-storage" returned a 405
       at params.callback [as _callback] (C:\Users\prodi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66154:18)
       at self.callback (C:\Users\prodi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
       at Request.emit (node:events:513:28)
@@ -41,12 +41,17 @@ npm manifest:
       "preset": "jest-expo"
     },
     "dependencies": {
-      "@expo/vector-icons": "^13.0.0",
+      "@expo/vector-icons": "expo/vector-icons",
+      "@react-native-async-storage/async-storage": "react-native-async-storage/async-storage",
       "@react-navigation/native": "^6.0.2",
       "@react-navigation/stack": "^6.3.15",
       "@types/": "react-navigation/stack",
+      "@types/axios": "^0.14.0",
+      "@types/react-native-vector-icons": "^6.4.13",
       "@types/react-navigation": "^3.4.0",
       "@types/styled-components": "^5.1.26",
+      "@types/styled-components-react-native": "^5.2.1",
+      "axios": "^1.3.4",
       "expo": "~48.0.4",
       "expo-font": "~11.1.1",
       "expo-linking": "~4.0.1",
@@ -58,10 +63,13 @@ npm manifest:
       "react": "18.2.0",
       "react-dom": "18.2.0",
       "react-native": "0.71.3",
+      "react-native-async-storage": "^0.0.1",
       "react-native-gesture-handler": "^2.9.0",
-      "react-native-paper": "^5.2.0",
+      "react-native-paper": "^5.1.0",
+      "react-native-responsive-fontsize": "^0.5.1",
       "react-native-safe-area-context": "4.5.0",
       "react-native-screens": "~3.20.0",
+      "react-native-vector-icons": "^9.2.0",
       "react-native-web": "~0.18.10",
       "styled-components": "^5.3.6"
     },
@@ -1592,10 +1600,9 @@ Lockfile:
     dependencies:
       cross-spawn "^7.0.3"
   
-  "@expo/vector-icons@^13.0.0":
+  "@expo/vector-icons@^13.0.0", "@expo/vector-icons@expo/vector-icons":
     version "13.0.0"
-    resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-13.0.0.tgz#e2989b85e95a82bce216f88cf8fb583ab050ec95"
-    integrity sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==
+    resolved "https://codeload.github.com/expo/vector-icons/tar.gz/ef0f0e7654cae597a41843836cca950bf5ffaaeb"
   
   "@expo/xcpretty@^4.2.1":
     version "4.2.2"
@@ -1966,6 +1973,12 @@ Lockfile:
       "@babel/runtime" "^7.13.10"
       "@radix-ui/react-compose-refs" "1.0.0"
   
+  "@react-native-async-storage/async-storage@react-native-async-storage/async-storage":
+    version "1.17.11"
+    resolved "https://codeload.github.com/react-native-async-storage/async-storage/tar.gz/a821897b101692a8beeab8f8f17389fe2e361b37"
+    dependencies:
+      merge-options "^3.0.4"
+  
   "@react-native-community/cli-clean@^10.1.1":
     version "10.1.1"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-clean/-/cli-clean-10.1.1.tgz#4c73ce93a63a24d70c0089d4025daac8184ff504"
@@ -2299,6 +2312,13 @@ Lockfile:
       color "^3.1.2"
       react-native-iphone-x-helper "^1.2.1"
   
+  "@types/axios@^0.14.0":
+    version "0.14.0"
+    resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+    integrity sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==
+    dependencies:
+      axios "*"
+  
   "@types/babel__core@^7.1.14":
     version "7.20.0"
     resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.0.tgz#61bc5a4cae505ce98e1e36c5445e4bee060d8891"
@@ -2400,6 +2420,21 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
     integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
   
+  "@types/react-native-vector-icons@^6.4.13":
+    version "6.4.13"
+    resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.13.tgz#28b34d15094e040718beefb67cb3eff0c4994cb6"
+    integrity sha512-1PqFoKuXTSzMHwGMAr+REdYJBQAbe9xrww3ecZR0FsHcD1K+vGS/rxuAriL4rsI6+p69sZQjDzpEVAbDQcjSwA==
+    dependencies:
+      "@types/react" "*"
+      "@types/react-native" "^0.70"
+  
+  "@types/react-native@^0.70":
+    version "0.70.11"
+    resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.70.11.tgz#50c3d81e1351aac0562c3341c9bd57885651a2fe"
+    integrity sha512-FobPtzoNPNHugBKMfzs4Li0Q9ei4tgU8SI1M5Ayg7+t5/+noCm2sknI8uwij22wMkcHcefv8RFx4q28nNVJtCQ==
+    dependencies:
+      "@types/react" "*"
+  
   "@types/react-navigation@^3.4.0":
     version "3.4.0"
     resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-3.4.0.tgz#d610d13c9162312079a8ca102660143f07432cbf"
@@ -2426,7 +2461,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
     integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
   
-  "@types/styled-components@^5.1.26":
+  "@types/styled-components-react-native@^5.2.1":
+    version "5.2.1"
+    resolved "https://registry.yarnpkg.com/@types/styled-components-react-native/-/styled-components-react-native-5.2.1.tgz#08cba1f638c7a3a0b7017954d6e59baef36fb022"
+    integrity sha512-XI/SWDSLSe7IjZXA9jS0vv4WPpV2B+nQhefUqk00usNHxhErlzPtTGdhjMZgrH0uYz5R0hLLIandhmhDTLkKBg==
+    dependencies:
+      "@types/react" "*"
+      "@types/react-native" "^0.70"
+      "@types/styled-components" "*"
+  
+  "@types/styled-components@*", "@types/styled-components@^5.1.26":
     version "5.1.26"
     resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.26.tgz#5627e6812ee96d755028a98dae61d28e57c233af"
     integrity sha512-KuKJ9Z6xb93uJiIyxo/+ksS7yLjS1KzG6iv5i78dhVg/X3u5t1H7juRWqVmodIdz6wGVaIApo1u01kmFRdJHVw==
@@ -2730,6 +2774,15 @@ Lockfile:
     version "2.1.2"
     resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
     integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+  
+  axios@*, axios@^1.3.4:
+    version "1.3.4"
+    resolved "https://registry.yarnpkg.com/axios/-/axios-1.3.4.tgz#f5760cefd9cfb51fd2481acf88c05f67c4523024"
+    integrity sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==
+    dependencies:
+      follow-redirects "^1.15.0"
+      form-data "^4.0.0"
+      proxy-from-env "^1.1.0"
   
   babel-core@^7.0.0-bridge.0:
     version "7.0.0-bridge.0"
@@ -3278,6 +3331,15 @@ Lockfile:
       string-width "^4.2.0"
       strip-ansi "^6.0.0"
       wrap-ansi "^6.2.0"
+  
+  cliui@^7.0.2:
+    version "7.0.4"
+    resolved "https://registry.yarnpkg.com/cliui/-/cliui-7.0.4.tgz#a0265ee655476fc807aea9df3df8df7783808b4f"
+    integrity sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==
+    dependencies:
+      string-width "^4.2.0"
+      strip-ansi "^6.0.0"
+      wrap-ansi "^7.0.0"
   
   cliui@^8.0.1:
     version "8.0.1"
@@ -4362,6 +4424,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.185.2.tgz#cb7ee57f77377d6c5d69a469e980f6332a15e492"
     integrity sha512-2hJ5ACYeJCzNtiVULov6pljKOLygy0zddoqSI1fFetM+XRPpRshFdGEijtqlamA1XwyZ+7rhryI6FQFzvtLWUQ==
   
+  follow-redirects@^1.15.0:
+    version "1.15.2"
+    resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
+    integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
+  
   fontfaceobserver@^2.1.0:
     version "2.3.0"
     resolved "https://registry.yarnpkg.com/fontfaceobserver/-/fontfaceobserver-2.3.0.tgz#5fb392116e75d5024b7ec8e4f2ce92106d1488c8"
@@ -5009,6 +5076,11 @@ Lockfile:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
     integrity sha512-yvkRyxmFKEOQ4pNXCmJG5AEQNlXJS5LaONXo5/cLdTZdWvsZ1ioJEonLGAosKlMWE8lwUy/bJzMjcw8az73+Fg==
+  
+  is-plain-obj@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
+    integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
   
   is-plain-object@^2.0.3, is-plain-object@^2.0.4:
     version "2.0.4"
@@ -5976,6 +6048,13 @@ Lockfile:
     version "0.2.0"
     resolved "https://registry.yarnpkg.com/memory-cache/-/memory-cache-0.2.0.tgz#7890b01d52c00c8ebc9d533e1f8eb17e3034871a"
     integrity sha512-OcjA+jzjOYzKmKS6IQVALHLVz+rNTMPoJvCztFaZxwG14wtAW7VRZjwTQu06vKCYOxh4jVnik7ya0SXTB0W+xA==
+  
+  merge-options@^3.0.4:
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/merge-options/-/merge-options-3.0.4.tgz#84709c2aa2a4b24c1981f66c179fe5565cc6dbb7"
+    integrity sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==
+    dependencies:
+      is-plain-obj "^2.1.0"
   
   merge-stream@^2.0.0:
     version "2.0.0"
@@ -7142,6 +7221,11 @@ Lockfile:
       object-assign "^4.1.1"
       react-is "^16.13.1"
   
+  proxy-from-env@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+    integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
+  
   psl@^1.1.33:
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/psl/-/psl-1.9.0.tgz#d0df2a137f00794565fcaf3b2c00cd09f8d5a5a7"
@@ -7298,6 +7382,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
     integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
   
+  react-native-async-storage@^0.0.1:
+    version "0.0.1"
+    resolved "https://registry.yarnpkg.com/react-native-async-storage/-/react-native-async-storage-0.0.1.tgz#5f2ef5ff30eae64b4248e265b534e72ea41cdc69"
+    integrity sha512-EwOIpNfwMiELMnS7HDzgyX2xO4TALK95O473Z6Kai5Il5j/03yTTErwMtvoYnA0OKUHd1R54ptmbbMukUH03Xg==
+  
   react-native-codegen@^0.71.5:
     version "0.71.5"
     resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.71.5.tgz#454a42a891cd4ca5fc436440d301044dc1349c14"
@@ -7324,12 +7413,12 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.15.tgz#9e6b506f30729fe8eb086981702f4e3c891d2b13"
     integrity sha512-7S3pAuPaQJlhax6EZ4JMsDNpj05TfuzX9gPgWLrFfAIWIFLuJ6aDQYAZy2TEI9QJALPoWrj8LWaqP/DGYh14pw==
   
-  react-native-iphone-x-helper@^1.2.1:
+  react-native-iphone-x-helper@^1.2.1, react-native-iphone-x-helper@^1.3.1:
     version "1.3.1"
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
     integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
   
-  react-native-paper@^5.2.0:
+  react-native-paper@^5.1.0:
     version "5.2.0"
     resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-5.2.0.tgz#112c0dd7c5ad9e9da0791c9d0b430af380b326a3"
     integrity sha512-FfKvfh4nBvetTusiuc1QMuNxXdNai4lthoyD+dNPM03RnIapcjoKHrhCD1EvVi5c1kBSKHrlXQ3OAW/8QCQXNw==
@@ -7337,6 +7426,13 @@ Lockfile:
       "@callstack/react-theme-provider" "^3.0.8"
       color "^3.1.2"
       use-event-callback "^0.1.0"
+  
+  react-native-responsive-fontsize@^0.5.1:
+    version "0.5.1"
+    resolved "https://registry.yarnpkg.com/react-native-responsive-fontsize/-/react-native-responsive-fontsize-0.5.1.tgz#c39fa2212ecced2bac879211a7b25106534f72d2"
+    integrity sha512-G77iPzrf3BHxMxVm6G3Mw3vPImIdq+jLLXhYoOjWei6i9J3/jzUNUhNdRWvp49Csb5prhbVBLPM+pYZz+b3ESQ==
+    dependencies:
+      react-native-iphone-x-helper "^1.3.1"
   
   react-native-safe-area-context@4.5.0:
     version "4.5.0"
@@ -7357,6 +7453,14 @@ Lockfile:
     dependencies:
       react-freeze "^1.0.0"
       warn-once "^0.1.0"
+  
+  react-native-vector-icons@^9.2.0:
+    version "9.2.0"
+    resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-9.2.0.tgz#3c0c82e95defd274d56363cbe8fead8d53167ebd"
+    integrity sha512-wKYLaFuQST/chH3AJRjmOLoLy3JEs1JR6zMNgTaemFpNoXs0ztRnTxcxFD9xhX7cJe1/zoN5BpQYe7kL0m5yyA==
+    dependencies:
+      prop-types "^15.7.2"
+      yargs "^16.1.1"
   
   react-native-web@~0.18.10:
     version "0.18.12"
@@ -9002,6 +9106,11 @@ Lockfile:
       camelcase "^5.0.0"
       decamelize "^1.2.0"
   
+  yargs-parser@^20.2.2:
+    version "20.2.9"
+    resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
+    integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
+  
   yargs-parser@^21.1.1:
     version "21.1.1"
     resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
@@ -9023,6 +9132,19 @@ Lockfile:
       which-module "^2.0.0"
       y18n "^4.0.0"
       yargs-parser "^18.1.2"
+  
+  yargs@^16.1.1:
+    version "16.2.0"
+    resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
+    integrity sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==
+    dependencies:
+      cliui "^7.0.2"
+      escalade "^3.1.1"
+      get-caller-file "^2.0.5"
+      require-directory "^2.1.1"
+      string-width "^4.2.0"
+      y18n "^5.0.5"
+      yargs-parser "^20.2.2"
   
   yargs@^17.3.1, yargs@^17.5.1:
     version "17.7.1"

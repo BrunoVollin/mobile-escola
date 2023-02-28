@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import UserService from "./../services/user";
+import TokenStorage from "../services/storage/TokenStorage";
 
 type User = {
   name: string;
@@ -8,7 +9,11 @@ type User = {
 
 type AuthContextData = {
   user: User | null;
-  signIn: (email: string, password: string) => void;
+  signIn: (
+    email: string,
+    password: string,
+    userType: "teacher" | "student" | "adm"
+  ) => void;
   signOut: () => void;
 };
 
@@ -21,12 +26,28 @@ type AuthContextProviderProps = {
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const signIn = async (email: string, password: string) => {
-    const { first, last } = await UserService.login(email, password);
-    setUser({
-      name: first + " " + last,
+  const signIn = async (
+    email: string,
+    password: string,
+    userType: "teacher" | "student" | "adm"
+  ) => {
+    const { user, token } = await UserService.login(
       email,
-    });
+      password,
+      userType
+    );
+
+    const { first, last } = user;
+
+    if (token) {
+      console.log("token: " + token);
+      const tokenStorage = new TokenStorage();
+      await tokenStorage.saveToken(token);
+      setUser({
+        name: first + " " + last,
+        email,
+      });
+    }
   };
 
   const signOut = () => {

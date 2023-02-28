@@ -12,7 +12,7 @@ interface LoginProps {}
 export default function Login() {
   const navigation = useNavigation();
   const { signIn } = useContext(AuthContext);
-  const [checked, setChecked] = useState<"student" | "teacher" | "adm">();
+  const [checked, setChecked] = useState<"student" | "teacher" | "adm">("teacher");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +20,7 @@ export default function Login() {
   async function handleLogin() {
     setLoading(true);
     try {
-      await signIn(email, password);
+      await signIn(email, password, checked);
     } catch (err) {
       ToastAndroid.showWithGravityAndOffset(
         "ERRO: Verifique se os dados estão corretos",
@@ -60,6 +60,7 @@ export default function Login() {
           />
 
           <RadioButton.Item
+            disabled={true}
             label="Estudante"
             value="second"
             status={checked === "student" ? "checked" : "unchecked"}
@@ -72,6 +73,7 @@ export default function Login() {
             onPress={() => setChecked("teacher")}
           />
           <RadioButton.Item
+           disabled={true}
             label="Administrador"
             value="second"
             status={checked === "adm" ? "checked" : "unchecked"}
