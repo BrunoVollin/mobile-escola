@@ -2,8 +2,7 @@ import axios from 'axios';
 import TokenStorage from './storage/TokenStorage';
 
 const api = axios.create({
-    baseURL: "http://192.168.0.107:8000",
-
+    baseURL: "http://192.168.0.22:8000",
 });
 
 api.interceptors.request.use(
