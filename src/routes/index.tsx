@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Text } from "react-native";
 import { AuthContext } from "./../contexts/AuthContext";
 import Login from "./../pages/Login/index";
-import Home from "../pages/Home";
+import Home from "../pages/Teacher/Home";
 import TeacherClasses from "../pages/Teacher/TeacherClasses";
 
 const Stack = createStackNavigator();

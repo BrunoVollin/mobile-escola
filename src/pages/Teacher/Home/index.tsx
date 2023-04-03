@@ -2,11 +2,11 @@ import { Text } from "react-native";
 import { Wrapper, Container } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useCallback, useContext } from "react";
-import { AuthContext } from "./../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { Button } from "react-native-paper";
-import TeacherService from "../../services/teacher";
+import TeacherService from "../../../services/teacher";
 import { useFocusEffect } from "expo-router";
-import Card from "../../components/Card";
+import Card from "../../../components/Card";
 import { useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
 

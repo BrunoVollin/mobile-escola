@@ -7,8 +7,11 @@ export const Wrapper = styled.View`
     align-items: center;
 `;
 
-export const Container = styled.View`
-    display : flex; 
-    align-items: center;
+export const Container = styled.ScrollView.attrs({
+    // hide the scroll bar
+    showsVerticalScrollIndicator: false,
+
+})`
+
     width: 90%;
 `;
