@@ -9,11 +9,13 @@ import { useFocusEffect } from "expo-router";
 import Card from "../../../components/Card";
 import { useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
+import { TeacherClassScreenNavigationProp } from "../../../routes";
 
-interface HomeProps {}
+interface HomeProps {
+  navigation: TeacherClassScreenNavigationProp;
+}
 
-export default function Home() {
-  const navigation = useNavigation();
+export default function Home({ navigation }: HomeProps) {
   const { user, signOut } = useContext(AuthContext);
   const [classes, setClasses] = useState<[]>([]);
 
@@ -42,7 +44,25 @@ export default function Home() {
                 name: string;
                 description: string;
               };
-            }) => <Card title={item.name} subtitle={item.description} />}
+            }) => (
+              <Card
+                title={item.name}
+                subtitle={item.description}
+                actions={
+                  <>
+                    <Button
+                      onPress={() =>
+                        navigation.navigate("TeacherClassScreen", {
+                          classId: item.id,
+                        })
+                      }
+                    >
+                      Acessar
+                    </Button>
+                  </>
+                }
+              />
+            )}
             keyExtractor={(item) => item.id}
           />
         </Container>

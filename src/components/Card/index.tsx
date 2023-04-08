@@ -1,14 +1,14 @@
 import { Text } from "react-native";
 import { Wrapper } from "./styles";
 import { Button, Card as PaperCard } from "react-native-paper";
-import { ReactFragment } from "react";
+import { ReactFragment, ReactNode } from "react";
 
 interface CardProps {
   title: string;
   subtitle: string;
   content?: string | ReactFragment;
   cover?: string;
-  actions?: ReactFragment;
+  actions?: ReactNode
 }
 
 export default function Card({

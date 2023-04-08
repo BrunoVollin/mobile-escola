@@ -1,13 +1,34 @@
 import React, { useContext } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  StackNavigationProp,
+  createStackNavigator,
+} from "@react-navigation/stack";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { Text } from "react-native";
 import { AuthContext } from "./../contexts/AuthContext";
 import Login from "./../pages/Login/index";
 import Home from "../pages/Teacher/Home";
-import TeacherClasses from "../pages/Teacher/TeacherClasses";
+import TeacherClassScreen from "../pages/Teacher/Class";
 
 const Stack = createStackNavigator();
+
+type RootStackParamList = {
+  TeacherClassScreen: { classId: string };
+};
+
+export type TeacherClassScreenRouteProp = RouteProp<
+  RootStackParamList,
+  "TeacherClassScreen"
+>;
+export type TeacherClassScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "TeacherClassScreen"
+>;
+
+export interface TeacherClassScreenProps {
+  route: TeacherClassScreenRouteProp;
+  navigation: TeacherClassScreenNavigationProp;
+}
 
 const LoggedInStack = () => {
   return (
@@ -20,7 +41,7 @@ const LoggedInStack = () => {
         }}
       />
       <Stack.Screen name="Profile" component={() => <Text>sadsadas</Text>} />
-      <Stack.Screen name='TeacherClasses' component={TeacherClasses} />
+      <Stack.Screen name="TeacherClassScreen" component={TeacherClassScreen} />
     </Stack.Navigator>
   );
 };
@@ -37,7 +58,7 @@ const LoggedOutStack = () => {
       />
     </Stack.Navigator>
   );
-};  
+};
 
 const Routes = () => {
   const { user } = useContext(AuthContext);
