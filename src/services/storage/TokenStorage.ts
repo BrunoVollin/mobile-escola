@@ -11,6 +11,19 @@ class TokenStorage {
     }
   }
 
+  async saveUser(user: {
+    name: string;
+    email: string;
+  }): Promise<void> {
+    const userString = JSON.stringify(user);
+
+    try {
+      await AsyncStorage.setItem('user', userString);
+    } catch (error) {
+      console.log('Erro ao salvar o usuário:', error);
+    }
+  }
+
   async getToken(): Promise<string | null> {
     try {
       const token = await AsyncStorage.getItem(this.TOKEN_KEY);
@@ -22,6 +35,21 @@ class TokenStorage {
       }
     } catch (error) {
       console.log('Erro ao recuperar o token:', error);
+      return null;
+    }
+  }
+
+  async getUser(): Promise<{ name: string, email: string } | null> {
+    try {
+      const user = await AsyncStorage.getItem('user');
+      if (user !== null) {
+        return JSON.parse(user);
+      } else {
+        console.log('Usuário não encontrado');
+        return null;
+      }
+    } catch (error) {
+      console.log('Erro ao recuperar o usuário:', error);
       return null;
     }
   }

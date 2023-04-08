@@ -40,7 +40,6 @@ const LoggedInStack = () => {
           title: "Home",
         }}
       />
-      <Stack.Screen name="Profile" component={() => <Text>sadsadas</Text>} />
       <Stack.Screen name="TeacherClassScreen" component={TeacherClassScreen} />
     </Stack.Navigator>
   );

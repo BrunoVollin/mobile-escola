@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import UserService from "./../services/user";
 import TokenStorage from "../services/storage/TokenStorage";
 
@@ -25,28 +25,37 @@ type AuthContextProviderProps = {
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const tokenStorage = new TokenStorage();
+
+  useEffect(() => {
+    async function loadStorageData() {
+      const storageUser = await tokenStorage.getUser();
+      setUser(storageUser);
+    }
+
+    loadStorageData();
+  }, []);
 
   const signIn = async (
     email: string,
     password: string,
     userType: "teacher" | "student" | "adm"
   ) => {
-    const { user, token } = await UserService.login(
-      email,
-      password,
-      userType
-    );
+    const res = await UserService.login(email, password, userType);
 
-    const { first, last } = user;
+    const userData = {
+      name: res.user.first + " " + res.user.last,
+      email: res.user.email,
+    };
 
-    if (token) {
-      console.log("token: " + token);
-      const tokenStorage = new TokenStorage();
-      await tokenStorage.saveToken(token);
-      setUser({
-        name: first + " " + last,
-        email,
-      });
+    const { first, last } = res.user;
+    if (res.token) {
+      await tokenStorage.saveToken(res.token);
+      await tokenStorage.saveUser(userData);
+
+      setUser(userData);
+    } else {
+      console.log("token not saved");
     }
   };
 

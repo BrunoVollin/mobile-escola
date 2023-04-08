@@ -1,10 +1,9 @@
-import { Text, Image } from "react-native";
-import { Wrapper, Container } from "./styles";
+import { Text, Image, useColorScheme } from "react-native";
+import { Wrapper, Container, StyledButton, ImageContainer } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { Button, TextInput, RadioButton } from "react-native-paper";
-import { useContext, useState } from "react";
+import { useContext, useState, useCallback } from "react";
 import { AuthContext } from "./../../contexts/AuthContext";
-import UserService from "../../services/user";
 import { ToastAndroid } from "react-native";
 
 interface LoginProps {}
@@ -12,7 +11,9 @@ interface LoginProps {}
 export default function Login() {
   const navigation = useNavigation();
   const { signIn } = useContext(AuthContext);
-  const [checked, setChecked] = useState<"student" | "teacher" | "adm">("teacher");
+  const [checked, setChecked] = useState<"student" | "teacher" | "adm">(
+    "teacher"
+  );
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,10 +39,12 @@ export default function Login() {
     <>
       <Wrapper>
         <Container>
-          <Image
-            source={require("../../../assets/login.png")}
-            style={{ width: 200, height: 200 }}
-          />
+          <ImageContainer>
+            <Image
+              source={require("../../../assets/login.png")}
+              style={{ width: 200, height: 200 }}
+            />
+          </ImageContainer>
           <TextInput
             label="Email"
             autoCapitalize="none"
@@ -73,21 +76,21 @@ export default function Login() {
             onPress={() => setChecked("teacher")}
           />
           <RadioButton.Item
-           disabled={true}
+            disabled={true}
             label="Administrador"
             value="second"
             status={checked === "adm" ? "checked" : "unchecked"}
             onPress={() => setChecked("adm")}
           />
 
-          <Button
+          <StyledButton
             mode="contained"
             onPress={handleLogin}
             loading={loading}
             buttonColor={loading ? "#2f2f2f" : ""}
           >
             Logar
-          </Button>
+          </StyledButton>
         </Container>
       </Wrapper>
     </>
