@@ -29,6 +29,10 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   useEffect(() => {
     async function loadStorageData() {
+      const storageToken = await tokenStorage.getToken();
+      if (!storageToken) {
+        return;
+      }
       const storageUser = await tokenStorage.getUser();
       setUser(storageUser);
     }
@@ -47,8 +51,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       name: res.user.first + " " + res.user.last,
       email: res.user.email,
     };
-
-    const { first, last } = res.user;
     if (res.token) {
       await tokenStorage.saveToken(res.token);
       await tokenStorage.saveUser(userData);

@@ -20,4 +20,20 @@ api.interceptors.request.use(
     }
 );
 
+//logout user case 401
+api.interceptors.response.use(
+    response => {
+        return response;
+    },
+    async (error) => {
+        console.log("\nERRO: ", error.response.status);
+        if (error.response.status === 401) {
+            const tokenStorage = new TokenStorage();
+            await tokenStorage.deleteToken();
+        }
+        return Promise.reject(error);
+    }
+);
+
+
 export default api;

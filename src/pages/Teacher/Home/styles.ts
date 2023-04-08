@@ -10,5 +10,6 @@ export const Wrapper = styled.View`
 export const Container = styled.ScrollView.attrs({
     showsVerticalScrollIndicator: false,
 })`
+
     width: 90%;
 `;

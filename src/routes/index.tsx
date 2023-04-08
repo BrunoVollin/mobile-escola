@@ -12,7 +12,7 @@ import TeacherClassScreen from "../pages/Teacher/Class";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Colors from "../../constants/Colors";
-import { View } from "react-native";
+
 const colors = Colors.light;
 const Tab = createMaterialBottomTabNavigator();
 
@@ -24,56 +24,67 @@ const navigationTheme = {
 
 function MyTabs() {
   return (
-      <Tab.Navigator
-        initialRouteName="Home"
-        barStyle={{
-          backgroundColor: colors.primary,
-          borderBottomColor: colors.white,
+    <Tab.Navigator
+      initialRouteName="Classes"
+      barStyle={{
+        backgroundColor: colors.white,
+        borderBottomColor: colors.white,
+      }}
+      shifting={true}
+      activeColor={colors.primary}
+      inactiveColor={"rgba(62, 62, 62, 0.488)"}
+      //animate when cicling through tabs
+      labeled={true}
+    >
+      <Tab.Screen
+        options={{
+          tabBarColor: "blue",
+          tabBarIcon: ({ color }) => (
+            <Icon name="home" color={color} size={26} />
+          ),
         }}
-        shifting={true}
-        activeColor={colors.white}
-        inactiveColor={"rgba(255,255,255,0.5)"}
-      >
-        <Tab.Screen
-          options={{
-            tabBarColor: "blue",
-            tabBarIcon: ({ color }) => (
-              <Icon name="home" color={color} size={26} />
-            ),
-          }}
-          name="Home"
-          component={Home}
-        />
-        {/* <Tab.Screen name="Provas" component={() => <Text>Provas</Text>} />
-      <Tab.Screen name="Tarefas" component={() => <Text>Tarefas</Text>} />
-    <Tab.Screen name="Materiais" component={() => <Text>Materiais</Text>} /> */}
-      </Tab.Navigator>
+        name="Classes"
+        component={Home}
+      />
+      <Tab.Screen
+        options={{
+          tabBarColor: "blue",
+          tabBarIcon: ({ color }) => (
+            <Icon name="book" color={color} size={26} />
+          ),
+        }}
+        name="Provas"
+        component={Home}
+      />
+      <Tab.Screen
+        options={{
+          tabBarColor: "blue",
+          tabBarIcon: ({ color }) => (
+            <Icon name="pencil-square-o" color={color} size={26} />
+          ),
+        }}
+        name="Tarefas"
+        component={Home}
+      />
+    </Tab.Navigator>
   );
 }
 
 const Stack = createStackNavigator();
 
-type RootStackParamList = {
-  TeacherClassScreen: { classId: string };
-};
-
-export type TeacherClassScreenRouteProp = RouteProp<
-  RootStackParamList,
-  "TeacherClassScreen"
->;
-export type TeacherClassScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  "TeacherClassScreen"
->;
-
-export interface TeacherClassScreenProps {
-  route: TeacherClassScreenRouteProp;
-  navigation: TeacherClassScreenNavigationProp;
-}
-
 const LoggedInStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.primary,
+        },
+        headerTintColor: colors.white,
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={MyTabs}
@@ -83,14 +94,28 @@ const LoggedInStack = () => {
           }
         }
       />
-      <Stack.Screen name="TeacherClassScreen" component={TeacherClassScreen} />
+      <Stack.Screen
+        name="TeacherClassScreen"
+        component={TeacherClassScreen}
+        options={({ route }: any) => ({ title: route.params.pageName })}
+      />
     </Stack.Navigator>
   );
 };
 
 const LoggedOutStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.primary,
+        },
+        headerTintColor: colors.white,
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
       <Stack.Screen
         name="Login"
         component={Login}
