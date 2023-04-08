@@ -5,11 +5,13 @@ import Theme from "./Theme";
 import { DefaultTheme } from "react-native-paper";
 import { Provider as PaperProvider } from 'react-native-paper';
 
+
 const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
     primary: "#005AFF",
+    secondaryContainer: 'transparent',
   },
 };
 

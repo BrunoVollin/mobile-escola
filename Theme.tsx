@@ -1,10 +1,14 @@
 import React from "react";
+import { DefaultTheme } from "react-native-paper";
 import { ThemeProvider } from "styled-components";
 
 const theme = {
+  ...DefaultTheme,
   colors: {
+    ...DefaultTheme.colors,
     background: "#F0F0F7",
     primary: "#005AFF",
+    secondaryContainer: 'transparent',
   },
   fonts: ["sans-serif", "Roboto"],
   fontSizes: {
